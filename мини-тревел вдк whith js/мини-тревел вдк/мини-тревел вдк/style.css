@@ -1,0 +1,283 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'FreeMono', monospace;
+}
+
+body {
+    line-height: 1.6;
+    color: #333;
+    background: -webkit-linear-gradient(90deg, rgb(154, 52, 214), rgb(23, 79, 156));
+background: -moz-linear-gradient(90deg, rgb(154, 52, 214), rgb(23, 79, 156));
+background: linear-gradient(90deg, rgb(154, 52, 214), rgb(23, 79, 156));
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+/* шапка */
+.header{
+    background: -webkit-linear-gradient(90deg, rgb(133, 75, 216), rgb(146, 24, 174));
+background: -moz-linear-gradient(90deg, rgb(133, 75, 216), rgb(146, 24, 174));
+background: linear-gradient(90deg, rgb(133, 75, 216), rgb(146, 24, 174));
+    color: #fff;
+    text-align: center;
+    padding: 2rem 1rem;
+    box-shadow: 0 4px 12px rgb(67, 3, 97); 
+    animation: headerSlideDown 1s ease-out;
+}
+
+@keyframes headerSlideDown {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.header h1 {
+    font-size: 2.3rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    animation: textGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes textGlow {
+    0% {
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+    100% {
+        text-shadow: 0 0 10px rgba(255,255,255,0.8),
+                     0 0 20px rgba(255,255,255,0.6),
+                     0 0 30px rgba(255,255,255,0.4);
+    }
+}
+
+
+.header p {
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+
+
+/* шапка */
+.headHeader {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.headHeader a {
+    background-color: rgba(255,255,255,0.1);
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.7rem 1.5rem;
+    border: 2px solid white;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+}
+
+.headHeader a:hover {
+    background-color: white;
+    color: #7601ac;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.432);
+}
+
+
+/* содержимое */
+.intro{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    background-color: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.301);
+}
+.intro{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    background-color: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.301);
+}
+
+.intro-image{
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.intro-image img{
+    width: 800px;
+    height: 500px;
+    display: block;
+    transition: transform 0.7s ease;
+}
+
+.intro-image img:hover{
+    transform: scale(1.05);
+}
+
+.intro-description{
+    flex: 1;
+    padding: 2 rem;
+}
+
+.intro-description h2{
+    color: #7601ac;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    padding-bottom: 0.5rem;
+    display: inline-block; 
+}
+
+.intro-description p{
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: #7601ac;
+}
+
+/* факты */
+.facts{
+    margin-top: 3rem;
+}
+
+.facts h2{
+    text-align: center;
+    color: #fff;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+.facts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.fact-card {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.425);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.fact-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.658);
+}
+
+.fact-card h3 {
+    color: #7601ac;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.fact-card p {
+    color: #7601ac;
+}
+
+/* адаптивка */
+@media (max-width: 600px) {
+    .container {
+        padding: 0 10px;
+    }
+    
+    .header {
+        padding: 1.2rem 0.8rem;
+    }
+    
+    .header h1 {
+        font-size: 1.6rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .header p {
+        font-size: 1rem;
+        margin-bottom: 1.2rem;
+    }
+    
+    .box {
+        width: 80px;
+        height: 80px;
+        top: 10px;
+        right: 10px;
+    }
+    
+    .headHeader {
+        gap: 0.8rem;
+    }
+    
+    .headHeader a {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+        min-width: 110px;
+    }
+    
+    main {
+        padding: 1rem 0;
+    }
+    
+    .intro-image {
+        height: 220px;
+    }
+    
+    .intro-description {
+        padding: 1.2rem;
+    }
+    
+    .intro-description h2 {
+        font-size: 1.4rem;
+    }
+    
+    .intro-description p {
+        font-size: 0.95rem;
+    }
+    
+    .facts h2 {
+        font-size: 1.4rem;
+    }
+    
+    .fact-card {
+        padding: 1rem;
+    }
+    
+    .fact-card h3 {
+        font-size: 1.1rem;
+    }
+    
+    .footer {
+        padding: 1rem;
+    }
+}
+
+/* подвал */
+.footer {
+    background-color: #7601ac;
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 12px;
+}
+
+
+
+
+

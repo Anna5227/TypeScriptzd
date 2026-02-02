@@ -1,0 +1,492 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'FreeMono', monospace;
+}
+
+body {
+    line-height: 1.6;
+    color: #333;
+    background: -webkit-linear-gradient(90deg, rgb(154, 52, 214), rgb(23, 79, 156));
+background: -moz-linear-gradient(90deg, rgb(154, 52, 214), rgb(23, 79, 156));
+background: linear-gradient(90deg, rgb(154, 52, 214), rgb(23, 79, 156));
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* шапка */
+.header{
+    background: -webkit-linear-gradient(90deg, rgb(133, 75, 216), rgb(146, 24, 174));
+background: -moz-linear-gradient(90deg, rgb(133, 75, 216), rgb(146, 24, 174));
+background: linear-gradient(90deg, rgb(133, 75, 216), rgb(146, 24, 174));
+    color: #ffffff;
+    text-align: center;
+    padding: 2rem 1rem;
+    box-shadow: 0 4px 12px rgb(67, 3, 97); 
+}
+
+.header h1 {
+    font-size: 2.3rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    animation: textGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes textGlow {
+    0% {
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+    100% {
+        text-shadow: 0 0 10px rgba(255,255,255,0.8),
+                     0 0 20px rgba(255,255,255,0.6),
+                     0 0 30px rgba(255,255,255,0.4);
+    }
+}
+
+.header p {
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.headHeader {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.headHeader a {
+    background-color: rgba(255,255,255,0.1);
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.7rem 1.5rem;
+    border: 2px solid white;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+}
+
+.headHeader a:hover {
+    background-color: white;
+    color: #7601ac;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.432);
+}
+
+/* содержимое */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    flex: 1;
+}
+
+.contact-hero {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.contact-hero h2 {
+    color: #7601ac;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.contact-hero p {
+    font-size: 1.2rem;
+    color: #7601ac;
+}
+
+.container{
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 3rem; 
+}
+
+.info{
+    flex: 1;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.info h3{
+    color: #7601ac;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    padding-bottom: 0.5rem; 
+}
+
+.info-item {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background-color: #9302d6;
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.info-item:hover {
+    transform: translateX(5px);
+}
+
+.info-item h4 {
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.info-item p {
+    color: #ffffff;
+}
+
+/* обратка */
+.contact-form {
+    flex: 1;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.contact-form h3 {
+    color: #7601ac;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    padding-bottom: 0.5rem;
+}
+
+.feedback-form input,
+.feedback-form textarea{
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-top: 45px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.submit-btn {
+    background-color: #7601ac;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    width: 100%;
+}
+
+/* адаптивка */
+@media (max-width: 600px) {
+    .main-container {
+        padding: 0 10px;
+    }
+    
+    .header {
+        padding: 1.2rem 0.8rem;
+    }
+    
+    .header h1 {
+        font-size: 1.6rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .header p {
+        font-size: 1rem;
+        margin-bottom: 1.2rem;
+    }
+    
+    .headHeader {
+        gap: 0.8rem;
+    }
+    
+    .headHeader a {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+        min-width: 110px;
+    }
+    
+    main {
+        padding: 1.2rem 10px;
+    }
+    
+    .contact-hero {
+        padding: 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .contact-hero h2 {
+        font-size: 1.4rem;
+    }
+    
+    .contact-hero p {
+        font-size: 0.95rem;
+    }
+    
+    .contact-container {
+        gap: 1.2rem;
+    }
+    
+    .info,
+    .contact-form {
+        padding: 1.2rem;
+        border-radius: 8px;
+    }
+    
+    .info h3,
+    .contact-form h3 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+    }
+    
+    .info-item {
+        padding: 0.7rem;
+        margin-bottom: 1rem;
+    }
+    
+    .info-item h4 {
+        font-size: 0.95rem;
+    }
+    
+    .info-item p {
+        font-size: 0.9rem;
+    }
+    
+    .feedback-form {
+        gap: 1rem;
+    }
+    
+    .feedback-form input,
+    .feedback-form textarea {
+        padding: 0.7rem;
+        font-size: 0.95rem;
+    }
+    
+    .submit-btn {
+        padding: 0.8rem;
+        font-size: 0.95rem;
+    }
+    
+    .footer {
+        padding: 1rem;
+        margin-top: 1.5rem;
+    }
+}
+
+
+/* подвал */
+.footer {
+    background-color: #7601ac;
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 12px;
+}
+
+
+/* Стили для модальных окон */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #7601ac;
+        }
+
+        .modal-header h3 {
+            color: #7601ac;
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #7601ac;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background-color: #f0f0f0;
+            transform: rotate(90deg);
+        }
+
+        /* Кнопки для открытия модальных окон */
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .modal-btn {
+            background: linear-gradient(45deg, #7601ac, #9d3aff);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(45deg, #9d3aff, #7601ac);
+        }
+
+        /* Списки в модальных окнах */
+        .emergency-list,
+        .partners-list {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
+        }
+
+        .emergency-list li,
+        .partners-list li {
+            padding: 10px;
+            margin-bottom: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #7601ac;
+        }
+
+        /* Формы в модальных окнах */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #7601ac;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        /* Стили для Tippy tooltip */
+.tippy-box[data-theme~='custom'] {
+    background-color: #7601ac;
+    color: white;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 8px 12px;
+}
+
+.tippy-box[data-theme~='custom'][data-placement^='top'] > .tippy-arrow::before {
+    border-top-color: #7601ac;
+}
+
+.tippy-box[data-theme~='custom'][data-placement^='bottom'] > .tippy-arrow::before {
+    border-bottom-color: #7601ac;
+}
+
+.tippy-box[data-theme~='custom'][data-placement^='left'] > .tippy-arrow::before {
+    border-left-color: #7601ac;
+}
+
+.tippy-box[data-theme~='custom'][data-placement^='right'] > .tippy-arrow::before {
+    border-right-color: #7601ac;
+}
+
+/* Стили для кнопок копирования */
+.copy-btn {
+    margin-top: 5px;
+    padding: 5px 10px;
+    background: #7601ac;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.copy-btn:hover {
+    background: #9302d6;
+    transform: translateY(-1px);
+}
+
+/* Анимации для уведомлений */
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+/* Стили для активной ссылки в меню */
+.headHeader a.active {
+    background-color: white;
+    color: #7601ac;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.432);
+}

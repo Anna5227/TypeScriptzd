@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - Мини-тревел гид по Владивостоку</title>
+
+    <!-- Подключаем библиотеки для Tippy.js -->
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/scale.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="./contacts.css">
+</head>
+<body>
+    <!-- шапка -->
+    <nav>
+        <header class="header">
+            <h1>VDKTravel</h1>
+            <p>Город у моря</p>
+
+            <!-- меню -->
+            <div class="headHeader">
+                <a href="./index.html" data-tippy-content="Перейти на главную страницу">Главная</a>
+                <a href="./attraction.html" data-tippy-content="Посмотреть достопримечательности">Достопримечательности</a>
+                <a href="./routes.html" data-tippy-content="Изучить маршруты">Маршруты</a>
+                <a href="./contacts.html" data-tippy-content="Вы уже на странице контактов" class="active">Контакты</a>
+            </div>
+        </header>
+    </nav>
+
+    <!-- содержимое -->
+    <main>
+        <section class="contact-hero">
+            <h2>Свяжитесь с нами</h2>
+            <p>Есть вопросы о Владивостоке? Мы с радостью поможем!</p>
+            
+            <!-- Кнопки для модальных окон -->
+            <div class="action-buttons">
+                <button class="modal-btn" onclick="openEmergencyModal()" data-tippy-content="Экстренные контакты">🚨 Экстренная связь</button>
+                <button class="modal-btn" onclick="openScheduleModal()" data-tippy-content="Забронировать экскурсию">📅 Записаться на тур</button>
+                <button class="modal-btn" onclick="openPartnersModal()" data-tippy-content="Информация для партнёров">🤝 Партнёрам</button>
+            </div>
+        </section>
+
+        <div class="container">
+            <section class="info">
+                <h3>Контактная информация</h3>
+                <div class="info-item">
+                    <h4>Адрес</h4>
+                    <p id="address">г. Владивосток, ул. Молодёжная, 17</p>
+                    <button onclick="copyToClipboard('address')" class="copy-btn" data-tippy-content="Скопировать адрес">
+                        📋 Копировать адрес
+                    </button>
+                </div>
+
+                <div class="info-item">
+                    <h4>Телефон</h4>
+                    <p id="phone">8 (999) 999-99-99</p>
+                    <button onclick="copyToClipboard('phone')" class="copy-btn" data-tippy-content="Скопировать телефон">
+                        📋 Копировать телефон
+                    </button>
+                </div>
+
+                <div class="info-item">
+                    <h4>Email</h4>
+                    <p id="email">info@VDKTravel.ru</p>
+                    <button onclick="copyToClipboard('email')" class="copy-btn" data-tippy-content="Скопировать email">
+                        📋 Копировать email
+                    </button>
+                </div>
+
+                <div class="info-item">
+                    <h4>Часы работы</h4>
+                    <p>Пн-Пт: 9:00 - 18:00</p>
+                    <p>Сб-Вс: 10:00 - 16:00</p>
+                </div>
+            </section>
+
+            <!-- форма обратной связи -->
+            <section class="contact-form">
+                <h3>Форма обратной связи</h3>
+                <form class="feedback-form" id="contactForm">
+                    <input type="text" id="userName" placeholder="Ваше имя" required 
+                           data-tippy-content="Введите ваше имя">
+                    <input type="email" id="userEmail" placeholder="Email" required 
+                           data-tippy-content="Введите ваш email для ответа">
+                    <input type="tel" id="userPhone" placeholder="+7(___)___-__-__" required 
+                           data-tippy-content="Введите ваш номер телефона">
+                    <textarea id="userMessage" placeholder="Сообщение" required 
+                              data-tippy-content="Напишите ваше сообщение"></textarea>
+                    <button type="submit" id="submitBtn" class="submit-btn" data-tippy-content="Отправить форму">
+                        Отправить сообщение
+                    </button>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <!-- подвал -->
+    <footer class="footer">
+        <p>2025 Мини-тревел гид по Владивостоку. Все права защищены.</p>
+    </footer>
+
+    <!-- Модальные окна -->
+    <div class="modal" id="emergencyModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🚨 Экстренная связь</h3>
+                <button class="close-btn" onclick="closeModal('emergencyModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Для экстренных случаев:</strong></p>
+                <ul class="emergency-list" id="emergencyContacts"></ul>
+                <p style="margin-top: 15px; color: #dc3545;">
+                    <strong>⚠️ Внимание:</strong> Используйте только в экстренных случаях!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="scheduleModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>📅 Записаться на тур</h3>
+                <button class="close-btn" onclick="closeModal('scheduleModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="tourForm">
+                    <div class="form-group">
+                        <label for="tourDate">Выберите дату:</label>
+                        <input type="date" id="tourDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tourType">Выберите тур:</label>
+                        <select id="tourType" required></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="tourParticipants">Количество человек:</label>
+                        <input type="number" id="tourParticipants" min="1" max="20" value="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tourNotes">Дополнительные пожелания:</label>
+                        <textarea id="tourNotes" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Забронировать тур</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="partnersModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🤝 Информация для партнёров</h3>
+                <button class="close-btn" onclick="closeModal('partnersModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Контакты для партнёрства:</strong></p>
+                <ul class="partners-list">
+                    <li>📧 <strong>Email для сотрудничества:</strong> partners@VDKTravel.ru</li>
+                    <li>📞 <strong>Телефон партнёрам:</strong> +7 (999) 777-88-99</li>
+                    <li>👔 <strong>Контактное лицо:</strong> Иванов Иван Иванович</li>
+                </ul>
+                <p style="margin-top: 15px;">
+                    <strong>Условия сотрудничества:</strong><br>
+                    Мы открыты к сотрудничеству с отелями, ресторанами, транспортными компаниями и гидами.
+                </p>
+                <button class="modal-btn" onclick="sendPartnershipRequest()" style="width: 100%; margin-top: 20px;">
+                    📩 Отправить запрос на сотрудничество
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Подключаем библиотеки JavaScript -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <script src="https://unpkg.com/imask"></script>
+    <script src="./script.js"></script>
+</body>
+</html>
