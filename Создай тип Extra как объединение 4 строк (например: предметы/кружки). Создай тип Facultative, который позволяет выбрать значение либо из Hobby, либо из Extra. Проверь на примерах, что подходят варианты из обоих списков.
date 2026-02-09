@@ -1,0 +1,149 @@
+type Extra = "Программирование" | "Математика" | "Иностранные языки" | "Спорт";
+type Hobby = "Рисование" | "Музыка" | "Фотография" | "Путешествия";
+type Facultative = Hobby | Extra;
+interface StudentWithFacultative {
+    name: string;
+    facultative: Facultative;
+}
+
+const student1: StudentWithFacultative = {
+    name: "Анна",
+    facultative: "Программирование" 
+};
+
+const student2: StudentWithFacultative = {
+    name: "Борис",
+    facultative: "Математика" 
+};
+
+const student3: StudentWithFacultative = {
+    name: "Виктор",
+    facultative: "Спорт" 
+};
+
+const student4: StudentWithFacultative = {
+    name: "Галина",
+    facultative: "Рисование" 
+};
+
+const student5: StudentWithFacultative = {
+    name: "Дмитрий",
+    facultative: "Музыка" 
+};
+
+const student6: StudentWithFacultative = {
+    name: "Елена",
+    facultative: "Путешествия" 
+};
+
+function checkFacultative(student: StudentWithFacultative): void {
+    console.log(`${student.name}: факультатив "${student.facultative}"`);
+    
+    const extraValues: Extra[] = ["Программирование", "Математика", "Иностранные языки", "Спорт"];
+    const hobbyValues: Hobby[] = ["Рисование", "Музыка", "Фотография", "Путешествия"];
+    
+    if (extraValues.includes(student.facultative as Extra)) {
+        console.log(`  → Этот факультатив из типа Extra`);
+    } else if (hobbyValues.includes(student.facultative as Hobby)) {
+        console.log(`  → Этот факультатив из типа Hobby`);
+    }
+    console.log("---");
+}
+
+const allStudents: StudentWithFacultative[] = [
+    student1, student2, student3, student4, student5, student6
+];
+
+console.log("=== Проверка факультативов студентов ===\n");
+
+allStudents.forEach(checkFacultative);
+
+function groupStudentsByFacultativeType(students: StudentWithFacultative[]): {
+    extraStudents: StudentWithFacultative[],
+    hobbyStudents: StudentWithFacultative[]
+} {
+    const extraStudents: StudentWithFacultative[] = [];
+    const hobbyStudents: StudentWithFacultative[] = [];
+    
+    const extraValues: Extra[] = ["Программирование", "Математика", "Иностранные языки", "Спорт"];
+    
+    students.forEach(student => {
+        if (extraValues.includes(student.facultative as Extra)) {
+            extraStudents.push(student);
+        } else {
+            hobbyStudents.push(student);
+        }
+    });
+    
+    return { extraStudents, hobbyStudents };
+}
+
+console.log("\n=== Группировка студентов по типу факультатива ===");
+const grouped = groupStudentsByFacultativeType(allStudents);
+
+console.log("\nСтуденты с факультативами из Extra:");
+grouped.extraStudents.forEach(s => console.log(`  - ${s.name}: ${s.facultative}`));
+
+console.log("\nСтуденты с факультативами из Hobby:");
+grouped.hobbyStudents.forEach(s => console.log(`  - ${s.name}: ${s.facultative}`));
+
+const validFacultative1: Facultative = "Программирование"; 
+const validFacultative2: Facultative = "Рисование";        
+const validFacultative3: Facultative = "Спорт";           
+const validFacultative4: Facultative = "Музыка";          
+
+console.log("\n=== Демонстрация работы типа Facultative ===");
+console.log(`"Программирование" ∈ Facultative: ${validFacultative1}`);
+console.log(`"Рисование" ∈ Facultative: ${validFacultative2}`);
+console.log(`"Спорт" ∈ Facultative: ${validFacultative3}`);
+console.log(`"Музыка" ∈ Facultative: ${validFacultative4}`);
+
+function isExtra(facultative: Facultative): facultative is Extra {
+    const extraValues: Extra[] = ["Программирование", "Математика", "Иностранные языки", "Спорт"];
+    return extraValues.includes(facultative as Extra);
+}
+
+function isHobby(facultative: Facultative): facultative is Hobby {
+    const hobbyValues: Hobby[] = ["Рисование", "Музыка", "Фотография", "Путешествия"];
+    return hobbyValues.includes(facultative as Hobby);
+}
+
+console.log("\n=== Проверка с type guards ===");
+
+allStudents.forEach(student => {
+    if (isExtra(student.facultative)) {
+        console.log(`${student.name}: "${student.facultative}" - это Extra (предмет/кружок)`);
+    } else if (isHobby(student.facultative)) {
+        console.log(`${student.name}: "${student.facultative}" - это Hobby (хобби)`);
+    }
+});
+function getFacultativeDescription(facultative: Facultative): string {
+    switch(facultative) {
+        case "Программирование":
+            return "Кружок по программированию на TypeScript/JavaScript";
+        case "Математика":
+            return "Углубленный курс математики";
+        case "Иностранные языки":
+            return "Изучение английского, немецкого или французского";
+        case "Спорт":
+            return "Спортивные секции: футбол, баскетбол, плавание";
+        
+        case "Рисование":
+            return "Кружок изобразительного искусства";
+        case "Музыка":
+            return "Музыкальная школа или вокальная студия";
+        case "Фотография":
+            return "Курсы фотографии и обработки изображений";
+        case "Путешествия":
+            return "Клуб путешественников и краеведов";
+            
+        default:
+            const _exhaustiveCheck: never = facultative;
+            return _exhaustiveCheck;
+    }
+}
+
+console.log("\n=== Описание факультативов ===");
+allStudents.forEach(student => {
+    console.log(`${student.name}: ${getFacultativeDescription(student.facultative)}`);
+});
