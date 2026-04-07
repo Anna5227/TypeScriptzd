@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список книг</title>
+</head>
+<body>
+    <div class="container">
+        <div class="add-book-form">
+            <div class="form-group">
+                <label for="bookTitle">Название книги</label>
+                <input type="text" id="bookTitle" placeholder="Введите название книги...">
+            </div>
+            <div class="form-group">
+                <label for="bookAuthor">Автор</label>
+                <input type="text" id="bookAuthor" placeholder="Введите автора...">
+            </div>
+            <button id="addBookBtn">Добавить книгу</button>
+            <div id="errorMessage" class="error-message"></div>
+        </div>
+    </div>
+
+    <script type="module" src="dist/main.js"></script>
+</body>
+</html>

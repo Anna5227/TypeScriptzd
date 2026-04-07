@@ -1,0 +1,16 @@
+{
+  "name": "book-list-app",
+  "version": "1.0.0",
+  "description": "Mini-приложение Список книг на TypeScript",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "keywords": ["typescript", "books", "app"],
+  "author": "",
+  "license": "MIT"
+}
